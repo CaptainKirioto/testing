@@ -48,8 +48,8 @@ async function getReviews() {
 
 /* ------------- Markup ------------- */
 
-function createMarkup(reviews) {
-  return reviews
+function createMarkup(reviews1) {
+  return reviews1
     .map(
       review =>
         `
