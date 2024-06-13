@@ -1,10 +1,7 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
+/* ------------- DEFAULT ------------- */
+
 @import url('./reset.css');
+@import 'swiper/css';
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -20,45 +17,87 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* ------------- SWIPER ------------- */
+  /* --swiper-navigation-top-offset: 95%; */
+  --swiper-navigation-sides-offset: 120px;
 }
 
-/* ------------- GENERAL ------------- */
+/* ------------- FOR TEST ------------- */
+
+/* body {
+  height: 100vh;
+}
+
+section {
+  height: 100vh;
+} */
+
+/* !------------- GENERAL -------------! */
+
+/* ------------- Header ------------- */
 
 .reviews-head {
+  font-family: Poppins, sans-serif;
   font-weight: 400;
   font-size: 52px;
   line-height: 1.23077;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #292929;
+  text-align: center;
+  margin-bottom: 40px;
 }
+
+/* ------------- Swiper and slides ------------- */
 
 .swiper {
   width: 320px;
-  position: absolute;
 }
 
-/* .swiper-wrapper {
-  width: 320px;
-} */
-
-/* .reviews-container {
-  width: 320px;
-} */
-
 .swiper-slide {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  gap: 24px;
-
+  width: 256px !important;
   background-color: #e4e5e6;
   border-radius: 16px;
   padding: 32px;
 }
 
+/* ------------- Swiper buttons ------------- */
+
+.swiper-buttons {
+  margin-top: 48px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: static !important;
+  display: inline-block !important;
+  border: 1px solid rgba(41, 41, 41, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: '' !important;
+}
+
+.swiper-btn-icon {
+  fill: #292929;
+  stroke: #292929;
+  display: flex;
+}
+
+/* ------------- Reviews info ------------- */
+
 .reviews-text {
+  font-family: Poppins, sans-serif;
   margin-bottom: 24px;
   font-weight: 300;
   font-size: 16px;
@@ -79,32 +118,44 @@
 }
 
 .reviews-name {
+  font-family: Poppins, sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.03em;
 }
 
-/* .swiper-buttons {
-  display: flex;
-  gap: 16px;
-  position: relative;
-} */
+/* !------------- TABLET -------------! */
 
-.swiper-button-prev {
-  display: block;
-  border: 1px solid rgba(41, 41, 41, 0.3);
-  border-radius: 8px;
-  padding: 12px;
-  width: 40px;
-  height: 40px;
+@media screen and (min-width: 768px) {
+  .reviews-head {
+    font-size: 108px;
+    line-height: 1.14815;
+    letter-spacing: 0.02em;
+    margin-bottom: 60px;
+  }
+
+  .swiper {
+    width: 704px;
+  }
+
+  .swiper-slide {
+    width: 640px !important;
+  }
 }
 
-.swiper-button-next {
-  display: block;
-  border: 1px solid rgba(41, 41, 41, 0.3);
-  border-radius: 8px;
-  padding: 12px;
-  width: 40px;
-  height: 40px;
+/* !------------- DESKTOP -------------! */
+
+@media screen and (min-width: 1280px) {
+  .reviews-head {
+    margin-bottom: 80px;
+  }
+
+  .swiper {
+    width: 1216px;
+  }
+
+  .swiper-slide {
+    width: 528px !important;
+  }
 }

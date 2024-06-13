@@ -1,40 +1,52 @@
+/* ------------- Axios import ------------- */
+
 import axios from 'axios';
 import './css/styles.css';
+
+/* ----------- iziToast ----------- */
+
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+/* ------------- Swiper import ------------- */
 
 import Swiper from 'swiper';
 import 'swiper/css';
 import { Navigation } from 'swiper/modules';
-import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const swiper = new Swiper('.swiper', {
   modules: [Navigation],
   speed: 400,
   spaceBetween: 20,
-  centeredSlides: true,
+  centeredSlides: false,
   centeredSlidesBounds: true,
-
-  // kaybord doesn't work for now
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false,
-  },
+  autoHeight: true,
+  slidesPerView: 'auto',
+  // keybord doesn't work for now
+  // keyboard: {
+  //   enabled: true,
+  //   onlyInViewport: false,
+  // },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
 });
 
+/* ------------- HTTP request ------------- */
+
 const BASE_URL = 'https://portfolio-js.b.goit.study/api/reviews';
 
-const reviews = document.querySelector('.reviews-container');
+const reviews = document.querySelector('.swiper-wrapper');
 
 async function getReviews() {
   const response = await axios.get(BASE_URL, {});
   console.log(response.data);
   return response.data;
 }
+
+/* ------------- Markup ------------- */
 
 function createMarkup(reviews) {
   return reviews
@@ -54,12 +66,20 @@ function createMarkup(reviews) {
     .join('');
 }
 
+/* ------------- Getting reviews ------------- */
+
 getReviews()
   .then(data => {
     if (data.length > 0) {
       reviews.insertAdjacentHTML('beforeend', createMarkup(data));
     } else {
-      alert('Sorry, no reviews found');
+      iziToast.show({
+        message: 'Sorry, no reviews found',
+        maxWidth: '432px',
+        position: 'topRight',
+        backgroundColor: '#EF4040',
+        messageColor: '#FFFFFF',
+      });
     }
   })
   .catch(error => {
