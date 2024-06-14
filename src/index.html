@@ -8,28 +8,33 @@
   </head>
   <body>
     <section class="reviews-section">
-      <h2 class="reviews-head">Reviews</h2>
+      <div class="container">
+        <h2 class="reviews-head">Reviews</h2>
 
-      <!-- Slider main container -->
-      <div class="swiper">
-        <!-- Additional required wrapper -->
-        <ul class="swiper-wrapper"></ul>
+        <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <ul class="swiper-wrapper"></ul>
 
-        <!-- Navigation buttons -->
-        <div class="swiper-buttons">
-          <div class="swiper-button-prev">
-            <svg class="swiper-btn-icon">
-              <use href="./img/symbol-defs.svg#icon-arrow-narrow-right-1"></use>
-            </svg>
-          </div>
-          <div class="swiper-button-next">
-            <svg class="swiper-btn-icon">
-              <use href="./img/symbol-defs.svg#icon-arrow-narrow-right"></use>
-            </svg>
+          <!-- Navigation buttons -->
+          <div class="swiper-buttons">
+            <div class="swiper-button-prev">
+              <svg class="swiper-btn-icon">
+                <use
+                  href="./img/symbol-defs.svg#icon-arrow-narrow-right-1"
+                ></use>
+              </svg>
+            </div>
+            <div class="swiper-button-next">
+              <svg class="swiper-btn-icon">
+                <use href="./img/symbol-defs.svg#icon-arrow-narrow-right"></use>
+              </svg>
+            </div>
           </div>
         </div>
+        <div class="error-container"></div>
+        <script type="module" src="./main.js"></script>
       </div>
-      <script type="module" src="./main.js"></script>
     </section>
   </body>
 </html>

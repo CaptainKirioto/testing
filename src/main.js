@@ -12,22 +12,22 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import Swiper from 'swiper';
 import 'swiper/css';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Keyboard } from 'swiper/modules';
 import 'swiper/css/navigation';
 
 const swiper = new Swiper('.swiper', {
-  modules: [Navigation],
+  modules: [Navigation, Keyboard],
   speed: 400,
   spaceBetween: 20,
   centeredSlides: false,
   centeredSlidesBounds: true,
   autoHeight: true,
   slidesPerView: 'auto',
-  // keybord doesn't work for now
-  // keyboard: {
-  //   enabled: true,
-  //   onlyInViewport: false,
-  // },
+
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+  },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
@@ -68,11 +68,16 @@ function createMarkup(reviews1) {
 
 /* ------------- Getting reviews ------------- */
 
+const errorContainer = document.querySelector('.error-container');
+const swiperContainer = document.querySelector('.swiper');
+
 getReviews()
   .then(data => {
+    errorContainer.style.display = 'none';
     if (data.length > 0) {
       reviews.insertAdjacentHTML('beforeend', createMarkup(data));
     } else {
+      reviews.insertAdjacentHTML('beforeend', 'Not found');
       iziToast.show({
         message: 'Sorry, no reviews found',
         maxWidth: '432px',
@@ -83,5 +88,14 @@ getReviews()
     }
   })
   .catch(error => {
+    swiperContainer.style.display = 'none';
+    errorContainer.insertAdjacentHTML('beforeend', `<p>Not found</p>`);
+    iziToast.show({
+      message: 'Sorry, no reviews found',
+      maxWidth: '432px',
+      position: 'topRight',
+      backgroundColor: '#EF4040',
+      messageColor: '#FFFFFF',
+    });
     console.log(error);
   });

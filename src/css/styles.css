@@ -17,10 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  /* ------------- SWIPER ------------- */
-  /* --swiper-navigation-top-offset: 95%; */
-  --swiper-navigation-sides-offset: 120px;
 }
 
 /* ------------- FOR TEST ------------- */
@@ -89,9 +85,9 @@ section {
 }
 
 .swiper-btn-icon {
-  fill: #292929;
   stroke: #292929;
   display: flex;
+  fill: transparent;
 }
 
 /* ------------- Reviews info ------------- */
@@ -125,6 +121,20 @@ section {
   letter-spacing: 0.03em;
 }
 
+.error-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: bold;
+  width: 320px;
+  height: 296px;
+  border-radius: 16px;
+  padding: 32px;
+  background-color: red;
+}
+
 /* !------------- TABLET -------------! */
 
 @media screen and (min-width: 768px) {
@@ -141,6 +151,10 @@ section {
 
   .swiper-slide {
     width: 640px !important;
+  }
+
+  .error-container {
+    width: 700px;
   }
 }
 
