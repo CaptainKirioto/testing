@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
+    <title>Test Reviews</title>
     
     <script type="module" crossorigin src="/testing/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/testing/assets/vendor-18157f21.js">
     <link rel="stylesheet" href="/testing/assets/vendor-22765d9e.css">
-    <link rel="stylesheet" href="/testing/assets/index-ed458714.css">
+    <link rel="stylesheet" href="/testing/assets/index-2606d1db.css">
   </head>
   <body>
     <section class="reviews-section">
@@ -22,22 +22,24 @@
 
           <!-- Navigation buttons -->
           <div class="swiper-buttons">
-            <div class="swiper-button-prev">
+            <div class="swiper-button-prev" id="btn-prev">
               <svg class="swiper-btn-icon">
                 <use
                   href="/testing/assets/symbol-defs-9f2bce72.svg#icon-arrow-narrow-right-1"
                 ></use>
               </svg>
             </div>
-            <div class="swiper-button-next">
+            <div class="swiper-button-next" id="btn-next">
               <svg class="swiper-btn-icon">
                 <use href="/testing/assets/symbol-defs-9f2bce72.svg#icon-arrow-narrow-right"></use>
               </svg>
             </div>
           </div>
         </div>
+
         <div class="error-container"></div>
         
+        <span class="loader"></span>
       </div>
     </section>
   </body>
