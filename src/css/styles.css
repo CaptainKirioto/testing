@@ -19,16 +19,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* ------------- FOR TEST ------------- */
-
-/* body {
-  height: 100vh;
-}
-
-section {
-  height: 100vh;
-} */
-
 /* !------------- GENERAL -------------! */
 
 /* ------------- Header ------------- */
@@ -51,24 +41,47 @@ section {
   width: 320px;
 }
 
-.swiper-slide {
-  width: 256px !important;
+#review-slide {
+  width: 256px;
   background-color: #e4e5e6;
   border-radius: 16px;
   padding: 32px;
 }
 
+/* .swiper-slide {
+  width: 256px !important;
+  background-color: #e4e5e6;
+  border-radius: 16px;
+  padding: 32px;
+} */
+
 /* ------------- Swiper buttons ------------- */
 
 .swiper-buttons {
   margin-top: 48px;
-  position: relative;
+  /* position: relative; */
   display: flex;
   justify-content: flex-end;
   gap: 16px;
 }
 
-.swiper-button-prev,
+#btn-next,
+#btn-prev {
+  position: static;
+  /* display: inline-block; */
+  border: 1px solid rgba(41, 41, 41, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+#btn-next::after,
+#btn-prev::after {
+  content: '';
+}
+
+/* .swiper-button-prev,
 .swiper-button-next {
   position: static !important;
   display: inline-block !important;
@@ -77,12 +90,13 @@ section {
   padding: 12px;
   width: 24px !important;
   height: 24px !important;
-}
+  visibility: collapse;
+} */
 
-.swiper-button-prev::after,
+/* .swiper-button-prev::after,
 .swiper-button-next::after {
   content: '' !important;
-}
+} */
 
 .swiper-btn-icon {
   stroke: #292929;
@@ -132,7 +146,29 @@ section {
   height: 296px;
   border-radius: 16px;
   padding: 32px;
-  background-color: red;
+  background-color: #e4e5e6;
+}
+
+/* ------------- Loader ------------- */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e4e5e6;
+  border-bottom-color: #00b068;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* !------------- TABLET -------------! */
@@ -149,8 +185,8 @@ section {
     width: 704px;
   }
 
-  .swiper-slide {
-    width: 640px !important;
+  #review-slide {
+    width: 640px;
   }
 
   .error-container {
@@ -169,7 +205,7 @@ section {
     width: 1216px;
   }
 
-  .swiper-slide {
-    width: 528px !important;
+  #review-slide {
+    width: 528px;
   }
 }

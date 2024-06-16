@@ -1,7 +1,7 @@
 /* ------------- Axios import ------------- */
 
 import axios from 'axios';
-import './css/styles.css';
+// import '../css/styles.css';
 
 /* ----------- iziToast ----------- */
 
@@ -15,6 +15,8 @@ import 'swiper/css';
 import { Navigation, Keyboard } from 'swiper/modules';
 import 'swiper/css/navigation';
 
+/* ------------- Swiper configs ------------- */
+
 const swiper = new Swiper('.swiper', {
   modules: [Navigation, Keyboard],
   speed: 400,
@@ -22,17 +24,42 @@ const swiper = new Swiper('.swiper', {
   centeredSlides: false,
   centeredSlidesBounds: true,
   autoHeight: true,
-  slidesPerView: 'auto',
+
+  breakpoints: {
+    // when window width is >= 1280px
+    1280: {
+      slidesPerView: 2,
+    },
+    // when window width is < 1280px
+    0: {
+      slidesPerView: 'auto',
+    },
+  },
 
   keyboard: {
     enabled: true,
     onlyInViewport: true,
   },
+
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
 });
+
+const loader = document.querySelector('.loader');
+
+/* ------------- Loader ------------- */
+
+function hideLoader() {
+  loader.style.visibility = 'collapsed';
+}
+
+function showLoader() {
+  loader.style.visibility = 'visible';
+}
+
+hideLoader();
 
 /* ------------- HTTP request ------------- */
 
@@ -42,7 +69,6 @@ const reviews = document.querySelector('.swiper-wrapper');
 
 async function getReviews() {
   const response = await axios.get(BASE_URL, {});
-  console.log(response.data);
   return response.data;
 }
 
@@ -53,7 +79,7 @@ function createMarkup(reviews1) {
     .map(
       review =>
         `
-      <li class="swiper-slide">
+      <li class="swiper-slide" id="review-slide">
       <p class="reviews-text">${review.review}</p>
       <div class="review-author-data">
           <a class="reviews-img-link" href="${review.avatar_url}">
@@ -74,7 +100,9 @@ const swiperContainer = document.querySelector('.swiper');
 getReviews()
   .then(data => {
     errorContainer.style.display = 'none';
+
     if (data.length > 0) {
+      showLoader();
       reviews.insertAdjacentHTML('beforeend', createMarkup(data));
     } else {
       reviews.insertAdjacentHTML('beforeend', 'Not found');
@@ -97,5 +125,7 @@ getReviews()
       backgroundColor: '#EF4040',
       messageColor: '#FFFFFF',
     });
-    console.log(error);
+  })
+  .finally(() => {
+    hideLoader();
   });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
+    <title>Test Reviews</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
@@ -18,22 +18,24 @@
 
           <!-- Navigation buttons -->
           <div class="swiper-buttons">
-            <div class="swiper-button-prev">
+            <div class="swiper-button-prev" id="btn-prev">
               <svg class="swiper-btn-icon">
                 <use
                   href="./img/symbol-defs.svg#icon-arrow-narrow-right-1"
                 ></use>
               </svg>
             </div>
-            <div class="swiper-button-next">
+            <div class="swiper-button-next" id="btn-next">
               <svg class="swiper-btn-icon">
                 <use href="./img/symbol-defs.svg#icon-arrow-narrow-right"></use>
               </svg>
             </div>
           </div>
         </div>
+
         <div class="error-container"></div>
         <script type="module" src="./main.js"></script>
+        <span class="loader"></span>
       </div>
     </section>
   </body>
